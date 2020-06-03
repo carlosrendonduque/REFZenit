@@ -12,6 +12,7 @@
     <x:Property Name="Inrobot_user" Type="InArgument(x:String)" />
     <x:Property Name="Inrobot_id" Type="InArgument(x:String)" />
     <x:Property Name="Inmessage" Type="InArgument(x:String)" />
+    <x:Property Name="InTransactionId" Type="InArgument(x:String)" />
   </x:Members>
   <sap:VirtualizedContainerService.HintSize>1213,959</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>ActivityBuilder_1</sap2010:WorkflowViewState.IdRef>
@@ -39,6 +40,7 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>UiPath.Excel</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
+      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <Flowchart sap2010:Annotation.AnnotationText="Manage the retrying mechanism for the framework and it is invoked in SetTransactionStatus.xaml when a system exception occurs. &#xA;The retrying method is based on the configurations defined in Config.xlsx." DisplayName="Retry Current Transaction" sap:VirtualizedContainerService.HintSize="990,746" sap2010:WorkflowViewState.IdRef="Flowchart_7">
@@ -126,6 +128,7 @@
                       <InArgument x:TypeArguments="x:String" x:Key="InProcess_id">[Inprocess_id]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="InMessage">[LogMessage2]</InArgument>
                       <InArgument x:TypeArguments="x:String" x:Key="InLog_type">[Inlog_type]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InTransaction_id">[InTransactionId]</InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <FlowStep.Next>
@@ -215,18 +218,39 @@
                       <av:PointCollection x:Key="ConnectorLocation">440,405.5 440,440 550,440</av:PointCollection>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SaveLog workflow" sap:VirtualizedContainerService.HintSize="200,51" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\SaveLog.xaml">
+                  <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke SaveLog workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_3" UnSafe="False" WorkflowFileName="Framework\SaveLog.xaml">
                     <ui:InvokeWorkflowFile.Arguments>
-                      <InArgument x:TypeArguments="x:String" x:Key="in_ConnectionStringLog">[InConnectionSringRobot]</InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="in_ConnectionStringLog">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InConnectionSringRobot" />
+                      </InArgument>
                       <OutArgument x:TypeArguments="x:Int32" x:Key="OutAffectedRecordsLog" />
-                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigLog">[in_Config]</InArgument>
-                      <InArgument x:TypeArguments="x:Int32" x:Key="InLog_level_id">2</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_id">[Inrobot_id]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_user">[Inrobot_user]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_machine">[Inrobot_machine]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InProcess_id">[Inprocess_id]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InMessage">[LogMessage3]</InArgument>
-                      <InArgument x:TypeArguments="x:String" x:Key="InLog_type">[Inlog_type]</InArgument>
+                      <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_ConfigLog">
+                        <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="in_Config" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:Int32" x:Key="InLog_level_id">
+                        <Literal x:TypeArguments="x:Int32" Value="2" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_id">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Inrobot_id" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_user">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Inrobot_user" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InRobot_machine">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Inrobot_machine" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InProcess_id">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Inprocess_id" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InMessage">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="LogMessage3" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InLog_type">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="Inlog_type" />
+                      </InArgument>
+                      <InArgument x:TypeArguments="x:String" x:Key="InTransaction_id">
+                        <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="InTransactionId" />
+                      </InArgument>
                     </ui:InvokeWorkflowFile.Arguments>
                   </ui:InvokeWorkflowFile>
                   <FlowStep.Next>
@@ -337,6 +361,7 @@
                   <InArgument x:TypeArguments="x:String" x:Key="InProcess_id">[Inprocess_id]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InMessage">[LogMessage]</InArgument>
                   <InArgument x:TypeArguments="x:String" x:Key="InLog_type">[Inlog_type]</InArgument>
+                  <InArgument x:TypeArguments="x:String" x:Key="InTransaction_id">[InTransactionId]</InArgument>
                 </ui:InvokeWorkflowFile.Arguments>
               </ui:InvokeWorkflowFile>
               <FlowStep.Next>
