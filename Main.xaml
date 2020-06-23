@@ -12,6 +12,8 @@
     <x:Property Name="InProcessId" Type="InArgument(x:String)" />
     <x:Property Name="inGetRobotData" Type="InArgument(x:String)" />
     <x:Property Name="inConnectionStringClient" Type="InArgument(x:String)" />
+    <x:Property Name="AdvanceUser" Type="InArgument(x:String)" />
+    <x:Property Name="AdvancePassword" Type="InArgument(x:String)" />
   </x:Members>
   <mva:VisualBasic.Settings>
     <x:Null />
@@ -76,7 +78,6 @@
       <AssemblyReference>System.ValueTuple</AssemblyReference>
       <AssemblyReference>UiPath.CV</AssemblyReference>
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
-      <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </sco:Collection>
   </TextExpression.ReferencesForImplementation>
   <StateMachine InitialState="{x:Reference __ReferenceID3}" sap2010:Annotation.AnnotationText="[Process title]&#xA;[Process description]&#xA;[Additional information (e.g., author, contact information and applications involved and required external setup)]" DisplayName="General Business Process" sap:VirtualizedContainerService.HintSize="687,795" sap2010:WorkflowViewState.IdRef="StateMachine_1">
@@ -523,18 +524,10 @@
                                     </ui:InvokeWorkflowFile>
                                     <ui:InvokeWorkflowFile ContinueOnError="{x:Null}" DisplayName="Invoke LoadTransactionData workflow" sap:VirtualizedContainerService.HintSize="334,87" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_26" UnSafe="False" WorkflowFileName="Framework\LoadTransactionData.xaml">
                                       <ui:InvokeWorkflowFile.Arguments>
-                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtRobotData">
-                                          <mva:VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="OutDtRobotData" />
-                                        </InOutArgument>
-                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">
-                                          <mva:VisualBasicValue x:TypeArguments="scg:Dictionary(x:String, x:Object)" ExpressionText="Config" />
-                                        </InArgument>
-                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_NumberOfTransactions">
-                                          <mva:VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="OutNumberOfTransactions" />
-                                        </OutArgument>
-                                        <InArgument x:TypeArguments="x:String" x:Key="GetRobotData">
-                                          <mva:VisualBasicValue x:TypeArguments="x:String" ExpressionText="inGetRobotData" />
-                                        </InArgument>
+                                        <InOutArgument x:TypeArguments="sd:DataTable" x:Key="out_dtRobotData">[OutDtRobotData]</InOutArgument>
+                                        <InArgument x:TypeArguments="scg:Dictionary(x:String, x:Object)" x:Key="in_Config">[Config]</InArgument>
+                                        <OutArgument x:TypeArguments="x:Int32" x:Key="out_NumberOfTransactions">[OutNumberOfTransactions]</OutArgument>
+                                        <InArgument x:TypeArguments="x:String" x:Key="GetRobotData">[inGetRobotData]</InArgument>
                                         <InArgument x:TypeArguments="x:String" x:Key="ConnectionStringClient" />
                                       </ui:InvokeWorkflowFile.Arguments>
                                     </ui:InvokeWorkflowFile>
